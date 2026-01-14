@@ -1,0 +1,79 @@
+USE Proxecto02;
+
+-- =========================
+-- FABRICAS (BMW)
+-- =========================
+INSERT INTO FABRICA (id_fabrica, nombre, direccion, ciudad, pais) VALUES
+(1, 'BMW Group Plant Munich', 'Petuelring 130', 'Munich', 'Alemania'),
+(2, 'BMW Group Plant Dingolfing', 'BMW Straße 1', 'Dingolfing', 'Alemania'),
+(3, 'BMW Group Plant Leipzig', 'BMW Allee 1', 'Leipzig', 'Alemania');
+
+-- =========================
+-- EMPLEADO (UNICO)
+-- usuario: usuario
+-- contraseña: abc123
+-- =========================
+INSERT INTO EMPLEADO (
+    id_empleado, NIF, nombre, usuario, contrasenha, salario, mail, telefono, puesto, direccion
+) VALUES (
+    1,
+    '11111111A',
+    'Empleado BMW',
+    'usuario',
+    'abc123',
+    3500.00,
+    'empleado@bmw.com',
+    '600000001',
+    'Gestor Comercial',
+    'Munich, Alemania'
+);
+
+-- =========================
+-- COCHES BMW
+-- =========================
+INSERT INTO COCHE (
+    id_coche, matricula, color, anho, modelo, id_fabricacion, disponibilidad, imagen
+) VALUES
+(1, 'BMW0001', 'Negro', 2022, 'BMW Serie 1', 1, TRUE, 'serie1.jpg'),
+(2, 'BMW0002', 'Azul', 2023, 'BMW Serie 3', 1, TRUE, 'serie3.jpg'),
+(3, 'BMW0003', 'Blanco', 2021, 'BMW Serie 5', 2, FALSE, 'serie5.jpg'),
+(4, 'BMW0004', 'Gris', 2024, 'BMW X1', 2, TRUE, 'x1.jpg'),
+(5, 'BMW0005', 'Negro', 2023, 'BMW X3', 2, TRUE, 'x3.jpg'),
+(6, 'BMW0006', 'Rojo', 2024, 'BMW X5', 3, FALSE, 'x5.jpg'),
+(7, 'BMW0007', 'Blanco', 2022, 'BMW i4', 3, TRUE, 'i4.jpg'),
+(8, 'BMW0008', 'Azul', 2023, 'BMW iX', 3, TRUE, 'ix.jpg'),
+(9, 'BMW0009', 'Gris', 2021, 'BMW Z4', 1, TRUE, 'z4.jpg'),
+(10,'BMW0010', 'Negro', 2024, 'BMW M4', 1, FALSE, 'm4.jpg');
+
+-- =========================
+-- CLIENTES
+-- =========================
+INSERT INTO CLIENTE (id_cliente, NIF, nombre, telefono, mail) VALUES
+(1, '22222222B', 'Laura Gómez', '600111222', 'laura@gmail.com'),
+(2, '33333333C', 'Pedro Sánchez', '600222333', 'pedro@gmail.com'),
+(3, '44444444D', 'Ana Torres', '600333444', 'ana@gmail.com'),
+(4, '55555555E', 'Miguel López', '600444555', 'miguel@gmail.com'),
+(5, '66666666F', 'Sofía Ruiz', '600555666', 'sofia@gmail.com');
+
+-- =========================
+-- ALQUILERES
+-- =========================
+INSERT INTO ALQUILA (
+    fecha_alquiler, fecha_devolucion, id_coche, id_cliente, id_empleado
+) VALUES
+('2025-01-01', '2025-01-10', 1, 1, 1),
+('2025-01-05', '2025-01-15', 3, 2, 1),
+('2025-01-08', '2025-01-18', 6, 3, 1),
+('2025-01-12', '2025-01-20', 10, 4, 1);
+
+-- =========================
+-- VENTAS
+-- =========================
+INSERT INTO VENTA (
+    fecha_venta, id_coche, id_cliente, id_empleado
+) VALUES
+('2025-01-03', 2, 1, 1),
+('2025-01-07', 5, 2, 1),
+('2025-01-10', 8, 3, 1),
+('2025-01-14', 9, 5, 1);
+
