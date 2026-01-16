@@ -34,13 +34,12 @@ public class NuevaVentaJDialog extends javax.swing.JDialog {
         ClienteTextField = new javax.swing.JTextField();
         MatriculaLabel = new javax.swing.JLabel();
         MatriculaTextField = new javax.swing.JTextField();
-        ModeloLabel = new javax.swing.JLabel();
-        ModeloTextField = new javax.swing.JTextField();
         FechaVentaLabel = new javax.swing.JLabel();
         FechaVentaTextField = new javax.swing.JTextField();
         AceptarButton = new javax.swing.JButton();
         CancelarButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ClienteNuevoButton = new javax.swing.JButton();
+        clockBean1 = new clock.ClockBean();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -52,8 +51,6 @@ public class NuevaVentaJDialog extends javax.swing.JDialog {
         ClienteLabel.setText("Nombre Cliente:");
 
         MatriculaLabel.setText("Matricula:");
-
-        ModeloLabel.setText("Modelo:");
 
         FechaVentaLabel.setText("Fecha venta:");
 
@@ -71,7 +68,7 @@ public class NuevaVentaJDialog extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("Nuevo Cliente");
+        ClienteNuevoButton.setText("Nuevo Cliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,12 +78,14 @@ public class NuevaVentaJDialog extends javax.swing.JDialog {
                 .addGap(42, 42, 42)
                 .addComponent(AceptarButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(ClienteNuevoButton)
                 .addGap(18, 18, 18)
                 .addComponent(CancelarButton)
+                .addGap(18, 18, 18)
+                .addComponent(clockBean1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(VentasLabel)
@@ -96,13 +95,11 @@ public class NuevaVentaJDialog extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(FechaVentaLabel)
-                                    .addComponent(ModeloLabel)
                                     .addComponent(MatriculaLabel))
                                 .addGap(18, 18, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(MatriculaTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(FechaVentaTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ModeloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(FechaVentaTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ClienteLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -130,20 +127,17 @@ public class NuevaVentaJDialog extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MatriculaLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ModeloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ModeloLabel))
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FechaVentaLabel)
                     .addComponent(FechaVentaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AceptarButton)
-                    .addComponent(jButton1)
-                    .addComponent(CancelarButton))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(ClienteNuevoButton)
+                    .addComponent(CancelarButton)
+                    .addComponent(clockBean1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,63 +151,21 @@ public class NuevaVentaJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_CancelarButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NuevaVentaJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NuevaVentaJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NuevaVentaJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NuevaVentaJDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                NuevaVentaJDialog dialog = new NuevaVentaJDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarButton;
     private javax.swing.JButton CancelarButton;
     private javax.swing.JLabel ClienteLabel;
+    private javax.swing.JButton ClienteNuevoButton;
     private javax.swing.JTextField ClienteTextField;
     private javax.swing.JLabel FechaVentaLabel;
     private javax.swing.JTextField FechaVentaTextField;
     private javax.swing.JLabel MatriculaLabel;
     private javax.swing.JTextField MatriculaTextField;
-    private javax.swing.JLabel ModeloLabel;
-    private javax.swing.JTextField ModeloTextField;
     private javax.swing.JLabel VendedorLabel;
     private javax.swing.JTextField VendedorTextField;
     private javax.swing.JLabel VentasLabel;
-    private javax.swing.JButton jButton1;
+    private clock.ClockBean clockBean1;
     // End of variables declaration//GEN-END:variables
 }
