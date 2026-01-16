@@ -39,13 +39,13 @@ public class TablaVentasJDialog extends javax.swing.JDialog {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre Vendedor", "Nombre Cliente", "Matricula", "Modelo", "Fecha"
+                "Nombre Vendedor", "Nombre Cliente", "Matricula", "Fecha"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -119,6 +119,8 @@ public class TablaVentasJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_CancelarButtonActionPerformed
 
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelarButton;

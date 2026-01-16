@@ -1,22 +1,19 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
 
 /**
  *
- * @author Administrator
+ * @author dam2_alu05@inf.ald
  */
-public class MainJDialog extends javax.swing.JDialog {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainJDialog.class.getName());
+public class MainJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form UserJDialog
+     * Creates new form MainJFrame
      */
-    public MainJDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public MainJFrame() {
         initComponents();
     }
 
@@ -30,18 +27,18 @@ public class MainJDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         LoginButton = new javax.swing.JButton();
+        LogoLabel = new javax.swing.JLabel();
         clockBean1 = new clock.ClockBean();
-        jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         VentaMenu = new javax.swing.JMenu();
         AlquilerMenu = new javax.swing.JMenu();
         CochesMenu = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         LoginButton.setText("Login");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icons/logo_bmw_editado.png"))); // NOI18N
+        LogoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/icons/logo_bmw_editado.png"))); // NOI18N
 
         VentaMenu.setText("Venta");
         jMenuBar2.add(VentaMenu);
@@ -57,26 +54,26 @@ public class MainJDialog extends javax.swing.JDialog {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(LogoLabel)
+                .addGap(18, 18, 18)
                 .addComponent(LoginButton))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(313, Short.MAX_VALUE)
                 .addComponent(clockBean1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jLabel1)
-                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(LoginButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LoginButton)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(LogoLabel)))
+                .addGap(13, 13, 13)
                 .addComponent(clockBean1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -90,9 +87,9 @@ public class MainJDialog extends javax.swing.JDialog {
     private javax.swing.JMenu AlquilerMenu;
     private javax.swing.JMenu CochesMenu;
     private javax.swing.JButton LoginButton;
+    private javax.swing.JLabel LogoLabel;
     private javax.swing.JMenu VentaMenu;
     private clock.ClockBean clockBean1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar2;
     // End of variables declaration//GEN-END:variables
 }

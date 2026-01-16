@@ -4,6 +4,8 @@
  */
 package view.Ventas;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author dam2_alu05@inf.ald
@@ -151,7 +153,37 @@ public class NuevaVentaJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_CancelarButtonActionPerformed
 
-    
+    public String getVendedor() {
+        return this.VendedorTextField.getText();
+    }
+
+    public void setVendedor(String NombreVendedor) {
+        this.VendedorTextField.setText(NombreVendedor);
+    }
+
+    public String getCliente() {
+        return this.ClienteTextField.getText();
+    }
+
+    public void setCliente(String NombreCliente) {
+        this.ClienteTextField.setText(NombreCliente);
+    }
+
+    public String getMatricula() {
+        return this.MatriculaTextField.getText();
+    }
+
+    public void setMatricula(String Matricula) {
+        this.MatriculaTextField.setText(Matricula);
+    }
+
+    public LocalDate getFechaVenta() {
+        return LocalDate.parse(this.FechaVentaTextField.getText());
+    }
+
+    public void SetFechaAlquiler(LocalDate FechaVenta) {
+        this.FechaVentaTextField.setText(FechaVenta.toString());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarButton;

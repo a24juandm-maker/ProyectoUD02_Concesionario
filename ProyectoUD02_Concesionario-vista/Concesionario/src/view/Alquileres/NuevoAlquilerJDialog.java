@@ -4,6 +4,8 @@
  */
 package view.Alquileres;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author dam2_alu05@inf.ald
@@ -31,17 +33,15 @@ public class NuevoAlquilerJDialog extends javax.swing.JDialog {
         NombreVendedorLabel = new javax.swing.JLabel();
         NombreClienteLabel = new javax.swing.JLabel();
         MatriculaLabel = new javax.swing.JLabel();
-        ModeloLabel = new javax.swing.JLabel();
         FechaAlquilerLabel = new javax.swing.JLabel();
         FechaDevolucionLabel = new javax.swing.JLabel();
         NombreVendedorTextField = new javax.swing.JTextField();
         NombreClienteTextField = new javax.swing.JTextField();
         MatriculaTextField = new javax.swing.JTextField();
-        ModeloTextField = new javax.swing.JTextField();
         FechaAlquilerTextField = new javax.swing.JTextField();
         FechaDevolucionTextField = new javax.swing.JTextField();
         AceptarButton = new javax.swing.JButton();
-        Cancelar = new javax.swing.JButton();
+        CancelarButton = new javax.swing.JButton();
         NuevoClienteButton = new javax.swing.JButton();
         clockBean1 = new clock.ClockBean();
 
@@ -56,8 +56,6 @@ public class NuevoAlquilerJDialog extends javax.swing.JDialog {
 
         MatriculaLabel.setText("Maticula :");
 
-        ModeloLabel.setText("Modelo :");
-
         FechaAlquilerLabel.setText("Fecha Alquiler :");
 
         FechaDevolucionLabel.setText("Fecha Devolucion :");
@@ -69,10 +67,10 @@ public class NuevoAlquilerJDialog extends javax.swing.JDialog {
             }
         });
 
-        Cancelar.setText("Cancelar");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        CancelarButton.setText("Cancelar");
+        CancelarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
+                CancelarButtonActionPerformed(evt);
             }
         });
 
@@ -91,7 +89,6 @@ public class NuevoAlquilerJDialog extends javax.swing.JDialog {
                 .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FechaAlquilerLabel)
-                    .addComponent(ModeloLabel)
                     .addComponent(NombreClienteLabel)
                     .addComponent(NombreVendedorLabel)
                     .addComponent(MatriculaLabel)
@@ -104,12 +101,11 @@ public class NuevoAlquilerJDialog extends javax.swing.JDialog {
                     .addComponent(NombreVendedorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NombreClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ModeloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FechaAlquilerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FechaDevolucionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(Cancelar)
+                        .addComponent(CancelarButton)
                         .addGap(18, 18, 18)
                         .addComponent(clockBean1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -137,20 +133,16 @@ public class NuevoAlquilerJDialog extends javax.swing.JDialog {
                     .addComponent(MatriculaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ModeloLabel)
-                    .addComponent(ModeloTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FechaAlquilerLabel)
                     .addComponent(FechaAlquilerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FechaDevolucionLabel)
                     .addComponent(FechaDevolucionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AceptarButton)
-                    .addComponent(Cancelar)
+                    .addComponent(CancelarButton)
                     .addComponent(NuevoClienteButton)
                     .addComponent(clockBean1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
@@ -163,27 +155,64 @@ public class NuevoAlquilerJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_AceptarButtonActionPerformed
 
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+    private void CancelarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CancelarActionPerformed
+    }//GEN-LAST:event_CancelarButtonActionPerformed
 
     private void NuevoClienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoClienteButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NuevoClienteButtonActionPerformed
 
- 
+    public String getVendedor() {
+        return this.NombreVendedorTextField.getText();
+    }
+
+    public void setVendedor(String NombreVendedor) {
+        this.NombreVendedorTextField.setText(NombreVendedor);
+    }
+
+    public String getCliente() {
+        return this.NombreClienteTextField.getText();
+    }
+
+    public void setCliente(String NombreCliente) {
+        this.NombreClienteTextField.setText(NombreCliente);
+    }
+
+    public String getMatricula() {
+        return this.MatriculaTextField.getText();
+    }
+
+    public void setMatricula(String Matricula) {
+        this.MatriculaTextField.setText(Matricula);
+    }
+
+    public LocalDate getFechaAlquiler() {
+        return LocalDate.parse(this.FechaAlquilerTextField.getText());
+    }
+
+    public void SetFechaAlquiler(LocalDate FechaAlquiler) {
+        this.FechaAlquilerTextField.setText(FechaAlquiler.toString());
+    }
+
+    public LocalDate getFechaDevolucion() {
+        return LocalDate.parse(this.FechaDevolucionTextField.getText());
+    }
+
+    public void SetFechaDevolucion(LocalDate FechaDevolucion) {
+        this.FechaDevolucionTextField.setText(FechaDevolucion.toString());
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarButton;
-    private javax.swing.JButton Cancelar;
+    private javax.swing.JButton CancelarButton;
     private javax.swing.JLabel FechaAlquilerLabel;
     private javax.swing.JTextField FechaAlquilerTextField;
     private javax.swing.JLabel FechaDevolucionLabel;
     private javax.swing.JTextField FechaDevolucionTextField;
     private javax.swing.JLabel MatriculaLabel;
     private javax.swing.JTextField MatriculaTextField;
-    private javax.swing.JLabel ModeloLabel;
-    private javax.swing.JTextField ModeloTextField;
     private javax.swing.JLabel NombreClienteLabel;
     private javax.swing.JTextField NombreClienteTextField;
     private javax.swing.JLabel NombreVendedorLabel;

@@ -41,13 +41,13 @@ public class TablaAlquileresJDialog extends javax.swing.JDialog {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nombre Vendedor", "Nombre Cliente", "Matricula", "Modelo", "Fecha Alquiler", "Fecha Devolucion"
+                "Nombre Vendedor", "Nombre Cliente", "Matricula", "Fecha Alquiler", "Fecha Devolucion"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
