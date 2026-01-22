@@ -612,7 +612,7 @@ public class ConexionBD {
     }
 
     public boolean cambiarContraseña(String password, String usuario) {
-        String sentenciaSql = "UPDATE coche SET contresenha=?  WHERE usuario=?;";
+        String sentenciaSql = "UPDATE empleado SET contrasenha=?  WHERE usuario=?;";
         PreparedStatement sentencia = null;
 
         try {

@@ -21,6 +21,7 @@ public class LoginController {
     MainJFrame parentView;
     LoginJDialog view;
     ConexionBD model;
+    private String usuario;
     
     public LoginController(LoginJDialog view, ConexionBD model, MainJFrame parentView) {
         this.view = view;
@@ -29,6 +30,10 @@ public class LoginController {
         this.view.addCancelMenuItemListener(this.pressCancelButton());
         this.view.addRegistrarseMenuItemListener(this.pressRegistrarseButton());
         this.view.addLoginButtonItemListener(this.pressLoginButton());
+        
+    }
+    public String getUsuario(){
+        return usuario;
     }
     
     private ActionListener pressCancelButton() {
@@ -57,6 +62,7 @@ public class LoginController {
             @Override
             public void actionPerformed(ActionEvent ae) {
               String user= view.getUsuario();
+              usuario=user;
               String pass= view.getContraseña();
                 if (user.isEmpty()||pass.isEmpty()) {
                     JOptionPane.showMessageDialog(view, "Introduzca ambos datos del formulario","Introduzca ambos datos del formulario", 0);
@@ -64,6 +70,7 @@ public class LoginController {
                 }
                 boolean login=model.verificarUsuario(user, pass);
                 if (login) {
+                    parentView.LoginU(user);
                     view.dispose();
                     parentView.Login();
                    
