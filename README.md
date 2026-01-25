@@ -54,64 +54,86 @@ Este enfoque permite una colaboración fluida entre los dos desarrolladores, ase
 El funcionamiento de la aplicación es el siguiente, al iniciar la aplicacion nos debemos de registar para poder acceder a las demas funcionalidades de la app, cuando entramos a la app accedemos como empleados para poder tener acceso a todos los campos de la misma, podremos mostrar todas las ventas que tiene nuestro concesionario, crear una nueva venta, dentro de esta en caso de que el cliente no este registrado podemos crearlo en el momento , para poder asi seguir realizando la venta, en el apartado de alquileres tenemos la misma opcion de ver todas los registros de alquiler de nuestro concesionario, tambien podemos crear un nuevo alquiler, como pasa en el caso de venta tambien se puede crear un cliente para podeer realizar el alquiler y en la tabla de coches aparece una lista de todos los coches que tenemos en el concesionario, mostrando toda la informacion del vehiculo, para que en caso de que un cliente no este seguro de la compra que quiere hacer puede ver todos los modelos para decidir asi cual es la mejor opcion para el.
 
 # Pantalla principal de la app 
-<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/cf177046-b25d-471b-8429-20c5fe46450d" />
+<img width="656" height="452" alt="vistaInicial" src="https://github.com/user-attachments/assets/c2bd3f0a-d03f-4b43-a0f9-f1c797b3bbd0" />
 
 # Registro de usuarios
-<img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/ab69ae52-8609-431d-ae90-b379ac4e70a7" />
+<img width="622" height="630" alt="login2" src="https://github.com/user-attachments/assets/5af8e679-4d43-4d4e-9cf0-e346672f7f30" />
+
 Una vez rellandos los campos usaremos el nombre de usario y la contraseña para poder acceder a todas la funcionalidades del programa 
 
 # Logeo de Usuarios
+En caso de que la persona intente entrar sin intorducir ninguna credencial el programa dara el siguiente error
+<img width="807" height="667" alt="LoginVacio" src="https://github.com/user-attachments/assets/c4a2514d-7844-4a18-a6a1-6b1a91bd5f0f" />
 
-<img width="2559" height="1389" alt="Captura de pantalla 2025-11-19 192743" src="https://github.com/user-attachments/assets/82787240-0d60-4bbc-8d43-a076dcd5659b" />
-El programa detecta cuales de los personajes empiezan o contienen las letras que escribimos en el buscador y va deshabilitando al resto 
+
+<img width="647" height="537" alt="login4" src="https://github.com/user-attachments/assets/3776b257-0e2b-4435-af38-29f00474434b" />
+
+Una vez iniciada la sesion con el usuario corespondiente aparece la pantalla con todas sus funcionalidades
+
+<img width="658" height="457" alt="VistaPostLogin" src="https://github.com/user-attachments/assets/fe948173-b4c1-4e1b-88c9-3e5c2fac9e31" />
+
+En caso de que el usuario quiera cambiar la contraseña debera hacer lo siguiente: introducira la nueva contraseña y le dara al boton de cambiar contraseña 
+
+<img width="657" height="457" alt="CambioContraseña" src="https://github.com/user-attachments/assets/d94fd4ba-d13e-412b-bb74-4aa2163b2ba3" />
+<img width="657" height="455" alt="AvisoCambioContraseña" src="https://github.com/user-attachments/assets/3fdf95dd-9f53-48b0-9877-39fab062c414" />
+
+
 
 # Mostramos todas las ventas 
-<img width="2559" height="1391" alt="Captura de pantalla 2025-11-19 192754" src="https://github.com/user-attachments/assets/470b77d8-24b8-4a40-ab82-387f7fad0d9e" />
+<img width="823" height="511" alt="Ventas1" src="https://github.com/user-attachments/assets/2e888208-91c3-4eac-b4cf-cf03fa3cc85a" />
 
-En este caso solo saldrán los personajes que tienen dicho rol 
+Una vez lanzamos el apartado de ventas por defecto no aparece ninguna venta
 
 # Generamos una nueva venta
+Para generar una nueva venta le damos al boton de nueva venta y nos mostrara la siguiente ventana 
 
-<img width="280" height="221" alt="Captura de pantalla 2025-11-19 192820" src="https://github.com/user-attachments/assets/1fdbb5ef-2881-4a7d-b47b-16298cf69096" /> 
-<img width="260" height="214" alt="Captura de pantalla 2025-11-19 192830" src="https://github.com/user-attachments/assets/e79ad5b0-5071-40b7-8856-6bb272738955" />
-<img width="262" height="208" alt="Captura de pantalla 2025-11-19 192852" src="https://github.com/user-attachments/assets/42a69998-eaad-4186-ba9a-9de927d0934f" />
-<img width="266" height="121" alt="Captura de pantalla 2025-11-19 192908" src="https://github.com/user-attachments/assets/aa200cfd-d371-4d86-870f-37aa849e8d25" />
+<img width="471" height="330" alt="ventas2" src="https://github.com/user-attachments/assets/a28f139f-86ca-4daa-955c-17266d6dae2d" />
 
+Cuando queremos hacer una nueva venta para que este registrada tendremos que rellenar cada uno de los campos, en caso de que el cliente no este creado y intentemos crear la venta nos dara el siguiente error 
 
+<img width="470" height="326" alt="VentaConClienteQueNoExiste" src="https://github.com/user-attachments/assets/6cb72528-1663-4a15-bfbf-edaacb8f337e" />
 
+<img width="481" height="327" alt="VentaConClienteQueNoExisteError" src="https://github.com/user-attachments/assets/e428f23e-9186-4493-93a2-956c6da56784" />
 
 # Creamos un nuevo Cliente
+Para crear un nuevo cliente pulsaremos el boton de nuevo cliente y nos aparecera la interfaz para crearlo 
 
-Al presionar en cada agente aparecerá una foto de su cuerpo entero, una descripción del personaje y sus correspondientes habilidades con sus respectivas imágenes de cada habilidad junto a lo que hace cada habilidad
-<img width="1922" height="1034" alt="image" src="https://github.com/user-attachments/assets/c5d153cc-4521-423d-aef6-c9e02017a61f" />
-<img width="2552" height="1389" alt="Captura de pantalla 2025-11-18 200107" src="https://github.com/user-attachments/assets/13a48d32-a719-48f9-b440-4c91da79217b" />
+<img width="420" height="332" alt="CreacionCliente" src="https://github.com/user-attachments/assets/9cf95075-9e73-4c73-a84b-f3758dd65d7a" />
+<img width="417" height="331" alt="CreacionCLiente2" src="https://github.com/user-attachments/assets/66c760f1-91ef-4b60-aa1c-1600b8bb855a" />
+
+Ahora una vez que el cliente esta creado correctamente podremos generar correctamente la nueva venta 
+
+<img width="472" height="327" alt="VentaConClienteExistente" src="https://github.com/user-attachments/assets/399b0471-b5de-43c1-8bf9-7e3f4bbc0a85" />
+<img width="473" height="330" alt="VentaCreadaConExito" src="https://github.com/user-attachments/assets/32d9ae85-11eb-48a1-90df-382b77ece9d2" />
+
 
 # Borramos los datos de una venta especifica 
-Pulsamos en el botón de crear y se nos abre la siguiente ventana para la creación del nuevo personaje
-<img width="2556" height="1389" alt="Captura de pantalla 2025-11-18 200821" src="https://github.com/user-attachments/assets/eb41ba9d-9dd2-4024-9288-63ffe7a32d1b" />
+Para borar los datos de una venta selecionamos la venta especifica que queremos borar y pulsamos el boton de borar y en el mismo momento la tabla se actualiza para dejar el resto de las ventas en caso de que haya alguna venta mas 
 
 
 
 # Mostramos todos los alquileres
-Clickamos en el personaje que deseamos editar y se nos abrirá una ventana con todos los datos iniciales del personaje para que nosotros podamos modificarlo
-<img width="2552" height="1385" alt="Captura de pantalla 2025-11-18 200251" src="https://github.com/user-attachments/assets/d347c722-f35e-44d1-bd63-c063d2c8f887" />
+Una vez lanzamos el apartado de alquileres por defecto no aparece ningun alquiler
+<img width="892" height="517" alt="VistaAlquileres" src="https://github.com/user-attachments/assets/ebb80dd0-7ab4-4edc-b2ea-42bfdf607e6b" />
 
-Una vez acabamos de modificar el personaje aparecerá una ventana que guardara los cambios que hayamos hecho 
-<img width="2551" height="1391" alt="Captura de pantalla 2025-11-18 200335" src="https://github.com/user-attachments/assets/9c6fe838-9a2a-455b-9936-991c276eaf20" />
 
-Si volvemos a clickar en el personaje este aparecerá con los cambios realizados anteriormente
-<img width="2552" height="1391" alt="Captura de pantalla 2025-11-18 200348" src="https://github.com/user-attachments/assets/c6c1e21a-9057-404c-8371-e1a9c44a0c32" />
 
 # Creamos un nuevo alquiler 
-Pulsamos en el botón de eliminar, aparece una ventana en la cual se nos pide que introduzcamos un nombre para borrar ese personaje
-<img width="2552" height="1390" alt="Captura de pantalla 2025-11-18 200407" src="https://github.com/user-attachments/assets/d9931464-eb9e-459c-b9aa-5ac47847cd24" />
+Para generar una nuevo alquiler le damos al boton de nuevo alquiler y nos mostrara la siguiente ventana 
+<img width="527" height="387" alt="NuevoAlquiler" src="https://github.com/user-attachments/assets/0b6c0e02-5753-4e8c-9008-d3c1f48d87c8" />
+<img width="527" height="385" alt="AlquilerCreadoConExito" src="https://github.com/user-attachments/assets/c85d025e-24b2-46c6-8e95-8f4587085207" />
+<img width="893" height="520" alt="VistaAlquileresConAlquileres" src="https://github.com/user-attachments/assets/c090afd5-eee3-4f48-8cd2-b4dc604558e0" />
+<img width="895" height="522" alt="BorrarAlquiler" src="https://github.com/user-attachments/assets/96a67d40-e157-4cd8-ba6e-b7d9c4da4ae1" />
+
 
 Pulsamos en el boton de eliminar en caso de querer borrarlo y si no lo queremos borrar en cancelar 
 <img width="2555" height="1390" alt="Captura de pantalla 2025-11-18 200419" src="https://github.com/user-attachments/assets/142abddb-85f4-4a26-8be5-240f1f5b280c" />
 
 # Mostramos todos los coches
 
+<img width="952" height="651" alt="VistaCoches" src="https://github.com/user-attachments/assets/2977cef8-2aa1-450a-ad07-1322647c079d" />
 
+<img width="907" height="658" alt="CochesDespuesDeBorrarElAlquiler" src="https://github.com/user-attachments/assets/fb5e678e-6c39-4c6a-bb1e-e00f47be5866" />
 
 
 # Reparto de tareas:
