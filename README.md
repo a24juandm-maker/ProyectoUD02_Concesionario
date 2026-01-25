@@ -126,9 +126,6 @@ Para generar una nuevo alquiler le damos al boton de nuevo alquiler y nos mostra
 <img width="895" height="522" alt="BorrarAlquiler" src="https://github.com/user-attachments/assets/96a67d40-e157-4cd8-ba6e-b7d9c4da4ae1" />
 
 
-Pulsamos en el boton de eliminar en caso de querer borrarlo y si no lo queremos borrar en cancelar 
-<img width="2555" height="1390" alt="Captura de pantalla 2025-11-18 200419" src="https://github.com/user-attachments/assets/142abddb-85f4-4a26-8be5-240f1f5b280c" />
-
 # Mostramos todos los coches
 
 <img width="952" height="651" alt="VistaCoches" src="https://github.com/user-attachments/assets/2977cef8-2aa1-450a-ad07-1322647c079d" />
