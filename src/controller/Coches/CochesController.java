@@ -33,7 +33,8 @@ public class CochesController {
         view.clearTable();
         List<Object[]> coches = model.listarCoches();
         for (Object[] c : coches) {
-            Vector row = new Vector();
+            if ((Boolean) c[4]) {
+              Vector row = new Vector();
             String nombreImagen=(String) c[0];
             ImageIcon icon=model.obtenerImagenPorModelo(nombreImagen);
            
@@ -48,6 +49,8 @@ public class CochesController {
             
 
             view.addRowTable(row);
+        }
+          
         }
     }
       private ActionListener getCancelarActionListener(){
