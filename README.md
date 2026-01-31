@@ -33,6 +33,75 @@ Nuestro proyecto esta planteado siguiendo el patrón MVC(Modelo,Vista,Controlado
 ### Modelo
 El modelo contiene los datos del programa y define cómo estos deben ser manipulados, es decir, contiene la lógica que interactúa respondiendo a las solicitudes del controlador para acceder o actualizar los datos. Notifica indirectamente a la vista cuando los datos han cambiado para que se actualice la presentación. 
 Nuestro modelo esta compuesto de los diferentes POJOS de las clases principales de la aplicación  y de la clase **ConexionBD** desde la cual gestionamos la comunicación con la base de datos: manejamos toda la conexión , introducción y consulta de datos, gestión de usuarios...
+
+**Fabrica**
+
+| Campo      | Tipo      | Restricciones |
+| ------------- | ------------- |-------------|
+| id_fabrica | INT |PK,NOT NULL|
+| nombre | Varchar(50)||
+| direccion | Varchar(50) ||
+| ciudad | Varchar(25)||
+| pais | Varchar(15) ||
+
+**Coche**
+
+| Campo      | Tipo      | Restricciones |
+| ------------- | ------------- |-------------|
+| id_coche | INT |PK,NOT NULL|
+| matricula | Varchar(7)||
+| color | Varchar(10) ||
+| anho | INT||
+| modelo | Varchar(20) ||
+| id_fabricacion | INT |Fabrica(id_fabrica)|
+| disponibilidad | BOOLEAN ||
+| precio | Float ||
+| imagen | Varchar(255) ||
+
+**Empleado**
+
+| Campo      | Tipo      | Restricciones |
+| ------------- | ------------- |-------------|
+| id_empleado | INT |PK,NOT NULL,AUTO_INCREMENT|
+| NIF | Varchar(9)|UNIQUE,NOT NULL|
+| nombre | Varchar(70) |NOT NULL|
+| usuario | Varchar(15)|NOT NULL|
+| contrasenha | Varchar(255) ||
+| salario | Float ||
+| mail | Varchar(50) ||
+| telefono | Varchar(12) ||
+| puesto | Varchar(20) ||
+| direccion | Varchar(50) ||
+
+**Cliente**
+| Campo      | Tipo      | Restricciones |
+| ------------- | ------------- |-------------|
+| id_cliente | INT |PK,NOT NULL|
+| NIF | Varchar(9)|UNIQUE,NOT NULL|
+| nombre | Varchar(70) |NOT NULL|
+| telefono | Varchar(12)||
+| mail | Varchar(50) ||
+
+**Alquila**
+
+| Campo      | Tipo      | Restricciones |
+| ------------- | ------------- |-------------|
+| id_alquiler | INT |PK,NOT NULL,AUTO_INCREMENT|
+| fecha_alquiler | Date ||
+| fecha_devolucion | Date ||
+| id_coche | INT | Coche(id_coche)|
+| id_cliente | INT | Cliente(id_cliente|
+| id_empleado | INT |Empleado(id_empleado)|
+
+**Venta**
+
+| Campo      | Tipo      | Restricciones |
+| ------------- | ------------- |-------------|
+| id_venta | INT |PK,NOT NULL,AUTO_INCREMENT|
+| fecha_venta | Date ||
+| id_coche | INT | Coche(id_coche)|
+| id_cliente | INT | Cliente(id_cliente|
+| id_empleado | INT |Empleado(id_empleado)|
  
 
 
@@ -235,18 +304,21 @@ De esta manera cada uno fue haciendo los commits necesarios para que la aplicaci
 ## Mejoras
 Algunas mejoras que podríamos implementar si tuviéramos mas tiempo son las siguientes:
 
-- Usar un layout para que la pantalla del programa se redimensione automáticamente a la pantalla en la que esta siendo mostrada 
-- Cambiar algunos JLabel por JTextField ya que en la mayoría de las vistas 
-- Mejorar el filtrado de datos erróneos en la creación
-- Filtrar los datos introducidos como puede ser DNI o número de teléfono
-- Poder seleccionar el cliente si ya esta creado al crear una venta o alquiler
-- Cambiar el formato de las fechas
+- Usar un layout para que la pantalla del programa se redimensione automáticamente a la pantalla en la que esta siendo mostrada .
+- Cambiar algunos JLabel por JTextField ya que en la mayoría de las vistas .
+- Mejorar el filtrado de datos erróneos en la creación.
+- Filtrar los datos introducidos como puede ser DNI , número de teléfono o correo electrónico.
+- Poder seleccionar el cliente si ya esta creado al crear una venta o alquiler.
+- Cambiar el formato de las fechas.
 
 
 
 
 ## Conclusiones
 
+Consideramos que la aplicación cumple con los requisitos solicitados , ya que hemos conseguido una correcta conexión a la base de datos, permitiendo la gestión de la información del concesionario. A través de la aplicación es posible crear, borrar y obtener la información de ventas y alquileres, así como la gestión de usuarios y clientes .La interfaz resulta intuitiva, facilitando el manejo de la aplicación por parte del empleado. 
+
+Con el desarrollo de este proyecto hemos ampliado y reforzado los conocimientos relacionados con el acceso y gestión de la base de datos desde Java utilizando PreparedStatement, ResultSet para realizar consultas e inserciones en la base de datos. Además, hemos conseguido la obtención de imágenes en base de datos para poder mostrarla por interfaz gráfica.
 
 
 
