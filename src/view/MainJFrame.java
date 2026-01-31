@@ -143,12 +143,18 @@ public class MainJFrame extends javax.swing.JFrame {
        public void addcochesJJMenuItemListener(ActionListener al) {
         this.cochesMenuItem.addActionListener(al);
     }
+        public void addEditMenuItemListener(ActionListener al) {
+        this.EditButton.addActionListener(al);
+    }
       public void notLogin(){
           this.AlquilerMenu.setVisible(false);
           this.CochesMenu.setVisible(false);
           this.VentaMenu.setVisible(false);
           this.NuevaContraseñaPasswordField.setVisible(false);
           this.EditButton.setVisible(false);
+      }
+      public String getNuevaContraseña(){
+          return this.NuevaContraseñaPasswordField.getText();
       }
         public void Login(){
           this.AlquilerMenu.setVisible(true);
@@ -157,7 +163,15 @@ public class MainJFrame extends javax.swing.JFrame {
           this.LoginButton.setVisible(false);
           this.EditButton.setVisible(true);
           this.NuevaContraseñaPasswordField.setVisible(true);
+          
       }
+        private String usuarioL;
+        public void LoginU(String usuario){
+            this.usuarioL=usuario;
+        }
+        public String getUsuario(){
+            return usuarioL;
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AlquilerMenu;

@@ -47,7 +47,7 @@ public class UserJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         RegisterjLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        RegisterjLabel.setText("Registarse");
+        RegisterjLabel.setText("Registrarse");
 
         NombreTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

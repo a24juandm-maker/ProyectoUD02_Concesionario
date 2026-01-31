@@ -169,6 +169,15 @@ public class TablaAlquileresJDialog extends javax.swing.JDialog {
     public void addBorrarButtonMenuItemListener(ActionListener al){
         this.BorrarButton.addActionListener(al);
     }
+    public String getSelectedItem() {
+        String SN = "";
+        int row = this.AlquileresTable.getSelectedRow();
+
+        if (row >= 0) {
+            SN = (String) AlquileresTable.getValueAt(row, 2);
+        }
+        return SN;
+    }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AlquileresLabel;

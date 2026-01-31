@@ -27,6 +27,9 @@ public class Alquila {
         this.id_empleado = id_empleado;
     }
 
+    public Alquila() {
+    }
+
     public int getId_alquiler() {
         return id_alquiler;
     }

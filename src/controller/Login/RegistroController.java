@@ -40,7 +40,8 @@ public class RegistroController {
                 }
                 boolean correcto = model.crearEmpleado(nombre, nif, usuario, contraseña);
                 if (correcto) {
-                    JOptionPane.showMessageDialog(view, "Usuario creado con exito", "Usuario creado con exito", 0);
+                   JOptionPane.showMessageDialog(view, "Usuario creado con exito", "Usuario creado con exito", 1);
+                    
                 } else {
                     JOptionPane.showMessageDialog(view, "Usuario ya existente", "Usuario ya existente", 0);
 

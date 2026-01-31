@@ -25,6 +25,10 @@ public class Venta {
         this.id_empleado = id_empleado;
     }
 
+    public Venta() {
+    }
+    
+
     public int getId_venta() {
         return id_venta;
     }

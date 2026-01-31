@@ -155,12 +155,21 @@ public class TablaVentasJDialog extends javax.swing.JDialog {
         this.NuevaVentaButton.addActionListener(al);
     }
 
-    public void addCancelarVentaMenuItemListener(ActionListener al) {
+    public void addCancelarMenuItemListener(ActionListener al) {
         this.CancelarButton.addActionListener(al);
     }
 
     public void addBorrarButtonMenuItemListener(ActionListener al){
         this.BorrarButton.addActionListener(al);
+    }
+     public String getSelectedItem() {
+        String SN = "";
+        int row = this.VentasTable.getSelectedRow();
+
+        if (row >= 0) {
+            SN = (String) VentasTable.getValueAt(row, 2);
+        }
+        return SN;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

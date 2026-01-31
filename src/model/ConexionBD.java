@@ -4,12 +4,14 @@
  */
 package model;
 
+import java.awt.Image;
 import java.lang.System.Logger.Level;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -44,13 +46,11 @@ public class ConexionBD {
 
     }
 
-    public List<Object> listarVentas() {
-        List<Object> ventas = new ArrayList();
+    public List<Venta> listarVentas() {
+        List<Venta> ventas = new ArrayList<>();
+
         try {
-            String sentenciaSQL = "SELECT e.nombre,cl.nombre,c.matricula,c.modelo,fecha_venta FROM venta v \n"
-                    + "JOIN empleado e on e.id_empleado = v.id_empleado \n"
-                    + "JOIN cliente cl on cl.id_cliente=v.id_cliente\n"
-                    + "JOIN coche c on c.id_coche=v.id_coche;";
+            String sentenciaSQL = "SELECT e.id_empleado,cl.id_cliente,c.id_coche,fecha_venta FROM venta v JOIN empleado e on e.id_empleado = v.id_empleado JOIN cliente cl on cl.id_cliente=v.id_cliente JOIN coche c on c.id_coche=v.id_coche;";
             PreparedStatement sentencia = null;
             ResultSet resultado = null;
 
@@ -58,13 +58,15 @@ public class ConexionBD {
             resultado = sentencia.executeQuery();
             while (resultado.next()) {
                 try {
-                    System.out.println("-----------------------------");
-                    ventas.add(resultado.getString(1));
-                    ventas.add(resultado.getString(2));
-                    ventas.add(resultado.getString(3));
-                    ventas.add(resultado.getString(4));
-                    ventas.add(resultado.getString(5));
-                    System.out.println("-----------------------------");
+
+                    Venta v = new Venta();
+                    v.setId_venta(this.getIdVenta() + 1);
+                    v.setId_empleado(resultado.getInt(1));
+                    v.setId_cliente(resultado.getInt(2));
+                    v.setId_coche(resultado.getInt(3));
+                    v.setFecha_venta(resultado.getDate(4));
+                    ventas.add(v);
+
                 } catch (SQLException ex) {
                     System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
                 }
@@ -76,9 +78,10 @@ public class ConexionBD {
         return ventas;
     }
 
-    public void listarAlquileres() {
+    public List<Alquila> listarAlquileres() {
+        List<Alquila> alquileres = new ArrayList<>();
         try {
-            String sentenciaSQL = "SELECT e.nombre,cl.nombre,c.matricula,fecha_alquiler,fecha_devolucion FROM alquila a JOIN empleado e on e.id_empleado = a.id_empleado JOIN cliente cl on cl.id_cliente=a.id_cliente JOIN coche c on c.id_coche=a.id_coche";
+            String sentenciaSQL = "SELECT e.id_empleado,cl.id_cliente,c.id_coche,fecha_alquiler,fecha_devolucion FROM alquila a JOIN empleado e on e.id_empleado = a.id_empleado JOIN cliente cl on cl.id_cliente=a.id_cliente JOIN coche c on c.id_coche=a.id_coche";
 
             PreparedStatement sentencia = null;
             ResultSet resultado = null;
@@ -87,14 +90,15 @@ public class ConexionBD {
             resultado = sentencia.executeQuery();
             while (resultado.next()) {
                 try {
-                    System.out.println("-----------------------------");
-                    System.out.println("Nombre vendedor->" + resultado.getString(1));
-                    System.out.println("Nombre cliente->" + resultado.getString(2));
-                    System.out.println("Matricula->" + resultado.getString(3));
-                    System.out.println("Modelo->" + resultado.getString(4));
-                    System.out.println("Fecha->" + resultado.getString(5));
-                    System.out.println("Fecha devoulcion->" + resultado.getString(5));
-                    System.out.println("-----------------------------");
+                    Alquila a = new Alquila();
+                    a.setId_alquiler(getIdAlquila() + 1);
+                    a.setId_empleado(resultado.getInt(1));
+                    a.setId_cliente(resultado.getInt(2));
+                    a.setId_coche(resultado.getInt(3));
+                    a.setFecha_alquiler(resultado.getDate(4));
+                    a.setFecha_devolucion(resultado.getDate(5));
+                    alquileres.add(a);
+
                 } catch (SQLException ex) {
                     System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
                 }
@@ -103,10 +107,11 @@ public class ConexionBD {
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
         }
-
+        return alquileres;
     }
 
-    public void listarCoches() {
+    public List<Object[]> listarCoches() {
+        List<Object[]> coches = new ArrayList<>();
         try {
             String sentenciaSQL = "SELECT c.imagen, c.modelo, c.matricula,c.color,c.disponibilidad,f.nombre,f.pais,c.precio FROM coche c JOIN fabrica f ON c.id_fabricacion=f.id_fabrica;";
             PreparedStatement sentencia = null;
@@ -115,27 +120,24 @@ public class ConexionBD {
             sentencia = conexion.prepareStatement(sentenciaSQL);
             resultado = sentencia.executeQuery();
             while (resultado.next()) {
-                try {
-                    System.out.println("-----------------------------");
-                    System.out.println("Imagen->" + resultado.getString(1));
-                    System.out.println("Modelo->" + resultado.getString(2));
-                    System.out.println("Matricula->" + resultado.getString(3));
-                    System.out.println("Color->" + resultado.getString(4));
-                    System.out.println("Disponibilidad->" + resultado.getString(5));
-                    System.out.println("Nombre->" + resultado.getString(6));
-                    System.out.println("Pais->" + resultado.getString(7));
-                    System.out.println("Precio->" + resultado.getString(8));
-                    System.out.println("-----------------------------");
-                } catch (SQLException ex) {
-                    System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
-                }
+                coches.add(new Object[]{
+                    resultado.getString(1),
+                    resultado.getString(2),
+                    resultado.getString(3),
+                    resultado.getString(4),
+                    resultado.getBoolean(5),
+                    resultado.getString(6),
+                    resultado.getString(7),
+                    resultado.getFloat(8)
+
+                });
 
             }
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
         }
+        return coches;
     }
-//Hay que cambiarlo
 
     public boolean crearVenta(LocalDate fecha, int id_coche, int id_comprador, int id_venta) {
 
@@ -151,17 +153,17 @@ public class ConexionBD {
             sentencia.setInt(3, id_comprador);
             sentencia.setInt(4, id_venta);
 
-            sentencia.executeUpdate();
-            return true;
+            int cambio=sentencia.executeUpdate();
+            return cambio>=1;
+            
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
             return false;
         }
-        
 
     }
 
-    public void crearAlquiler(Alquila a) {
+    public boolean crearAlquiler(LocalDate a, LocalDate fechaDevolucion, int id_coche, int id_cliente, int id_empleado) {
 
         String sentenciaSql = "INSERT INTO ALQUILA\n"
                 + "(fecha_alquiler,fecha_devolucion, id_coche, id_cliente, id_empleado)\n"
@@ -170,14 +172,16 @@ public class ConexionBD {
         PreparedStatement sentencia = null;
         try {
             sentencia = conexion.prepareStatement(sentenciaSql);
-            sentencia.setDate(1, (Date) a.getFecha_alquiler());
-            sentencia.setDate(2, (Date) a.getFecha_devolucion());
-            sentencia.setInt(3, a.getId_coche());
-            sentencia.setInt(4, a.getId_cliente());
-            sentencia.setInt(5, a.getId_empleado());
+            sentencia.setDate(1, Date.valueOf(a));
+            sentencia.setDate(2, Date.valueOf(fechaDevolucion));
+            sentencia.setInt(3, id_coche);
+            sentencia.setInt(4, id_cliente);
+            sentencia.setInt(5, id_empleado);
 
-            sentencia.executeUpdate();
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
         } catch (SQLException sqle) {
+            return false;
         }
 
     }
@@ -216,8 +220,8 @@ public class ConexionBD {
             sentencia.setString(2, nombre);
             sentencia.setString(3, usuario);
             sentencia.setString(4, pass);
-            sentencia.executeUpdate();
-            return true;
+            int cambio=sentencia.executeUpdate();
+            return cambio>=1;
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } finally {
@@ -230,6 +234,33 @@ public class ConexionBD {
             }
         }
         return false;
+    }
+
+    public boolean crearCliente(String NIF, String nombre, String mail, String telefono) {
+        String sentenciaSQL = "INSERT INTO CLIENTE (id_cliente,NIF,nombre,telefono,mail) VALUES (?,?,?,?,?)";
+        PreparedStatement sentencia = null;
+        try {
+            sentencia = conexion.prepareStatement(sentenciaSQL);
+            sentencia.setInt(1, getIdCliente() + 1);
+            sentencia.setString(2, NIF);
+            sentencia.setString(3, nombre);
+            sentencia.setString(4, telefono);
+            sentencia.setString(5, mail);
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        } finally {
+            if (sentencia != null) {
+                try {
+                    sentencia.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+            }
+        }
+        return false;
+
     }
 
     public int obtenerIDEmpleado(String nombre) {
@@ -349,22 +380,96 @@ public class ConexionBD {
         return 0;
     }
 
-    public void actualizarEstadoCoche(int idCoche) {
-String sentenciaSql = "UPDATE coche SET disponibilidad=false WHERE id_coche=?;";
+    public String getNombreCliente(int id) {
+        try {
+            String sentenciaSQL = "SELECT nombre FROM cliente WHERE id_cliente=?;";
+            PreparedStatement sentencia = null;
+            ResultSet resultado = null;
+
+            sentencia = conexion.prepareStatement(sentenciaSQL);
+            sentencia.setInt(1, id);
+            resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+                try {
+                    return resultado.getString(1);
+                } catch (SQLException ex) {
+                    System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+                }
+
+            }
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+        }
+
+        return "";
+    }
+
+    public String getNombreEmpleado(int id) {
+        try {
+            String sentenciaSQL = "SELECT nombre FROM empleado WHERE id_empleado=?;";
+            PreparedStatement sentencia = null;
+            ResultSet resultado = null;
+
+            sentencia = conexion.prepareStatement(sentenciaSQL);
+            sentencia.setInt(1, id);
+            resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+                try {
+                    return resultado.getString(1);
+                } catch (SQLException ex) {
+                    System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+                }
+
+            }
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+        }
+
+        return "";
+
+    }
+
+    public String getMatricula(int id) {
+        try {
+            String sentenciaSQL = "SELECT matricula FROM coche WHERE id_coche=?;";
+            PreparedStatement sentencia = null;
+            ResultSet resultado = null;
+
+            sentencia = conexion.prepareStatement(sentenciaSQL);
+            sentencia.setInt(1, id);
+            resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+                try {
+                    return resultado.getString(1);
+                } catch (SQLException ex) {
+                    System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+                }
+
+            }
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+        }
+
+        return "";
+
+    }
+
+    public void actualizarEstadoCocheVenta(int idCoche) {
+        String sentenciaSql = "UPDATE coche SET disponibilidad=false WHERE id_coche=?;";
         PreparedStatement sentencia = null;
-        
+
         try {
             sentencia = conexion.prepareStatement(sentenciaSql);
             sentencia.setInt(1, idCoche);
-             sentencia.executeUpdate();
-            
+            sentencia.executeUpdate();
+
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } finally {
             if (sentencia != null) {
                 try {
                     sentencia.close();
-                    
+
                 } catch (SQLException ex) {
                     Logger.getLogger(ConexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
                 }
@@ -372,9 +477,35 @@ String sentenciaSql = "UPDATE coche SET disponibilidad=false WHERE id_coche=?;";
             }
 
         }
-        
+
     }
-    
+
+    public void actualizarEstadoCocheDevolucion(int idCoche) {
+        String sentenciaSql = "UPDATE coche SET disponibilidad=true WHERE id_coche=?;";
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sentenciaSql);
+            sentencia.setInt(1, idCoche);
+            sentencia.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        } finally {
+            if (sentencia != null) {
+                try {
+                    sentencia.close();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+
+            }
+
+        }
+
+    }
+
     public boolean disponibilidadCoche(int idCoche) {
 
         String sentenciaSql = "SELECT disponibilidad FROM coche WHERE id_coche=?;";
@@ -385,7 +516,9 @@ String sentenciaSql = "UPDATE coche SET disponibilidad=false WHERE id_coche=?;";
             sentencia.setInt(1, idCoche);
             resultado = sentencia.executeQuery();
             while (resultado.next()) {
-                return true;
+                if (resultado.getBoolean(1)) {
+                    return true;
+                }
             }
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -404,4 +537,211 @@ String sentenciaSql = "UPDATE coche SET disponibilidad=false WHERE id_coche=?;";
         return false;
     }
 
+    public boolean existeCliente(String nif) {
+        String sentenciaSql = "SELECT NIF FROM cliente WHERE nif=?;";
+        PreparedStatement sentencia = null;
+        ResultSet resultado = null;
+        try {
+            sentencia = conexion.prepareStatement(sentenciaSql);
+            sentencia.setString(1, nif);
+            resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+
+                return true;
+
+            }
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        } finally {
+            if (sentencia != null) {
+                try {
+                    sentencia.close();
+                    resultado.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+
+            }
+
+        }
+        return false;
+    }
+
+    public int getIdCliente() {
+
+        try {
+            String sentenciaSQL = "SELECT COUNT(*) FROM CLIENTE;";
+            PreparedStatement sentencia = null;
+            ResultSet resultado = null;
+
+            sentencia = conexion.prepareStatement(sentenciaSQL);
+            resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+                try {
+
+                    return resultado.getInt(1);
+
+                } catch (SQLException ex) {
+                    System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+                }
+
+            }
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+        }
+        return 0;
+    }
+
+    public ImageIcon obtenerImagenPorModelo(String nombreImagen) {
+
+        String ruta = "/resources/coches/" + nombreImagen;
+        java.net.URL url = getClass().getResource(ruta);
+
+        if (url == null) {
+            return new ImageIcon(); 
+        }
+
+        ImageIcon icon = new ImageIcon(url);
+        Image img = icon.getImage().getScaledInstance(100, 80, Image.SCALE_SMOOTH);
+
+        return new ImageIcon(img);
+    }
+
+    public boolean cambiarContraseña(String password, String usuario) {
+        String sentenciaSql = "UPDATE empleado SET contrasenha=?  WHERE usuario=?;";
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sentenciaSql);
+            sentencia.setString(1, password);
+            sentencia.setString(2, usuario);
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
+
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        } finally {
+            if (sentencia != null) {
+                try {
+                    sentencia.close();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+
+            }
+
+        }
+        return false;
+    }
+
+    public int getIdVenta(String matricula) {
+
+        try {
+            String sentenciaSQL = "select id_venta FROM venta v JOIN coche c on c.id_coche=v.id_coche where  c.matricula= ?;";
+            PreparedStatement sentencia = null;
+            ResultSet resultado = null;
+
+            sentencia = conexion.prepareStatement(sentenciaSQL);
+            sentencia.setString(1, matricula);
+            resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+                try {
+
+                    return resultado.getInt(1);
+
+                } catch (SQLException ex) {
+                    System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+                }
+
+            }
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+        }
+        return 0;
+
+    }
+
+    public boolean borrarVenta(int id_venta) {
+        String sentenciaSql = "DELETE FROM venta WHERE id_venta=?";
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sentenciaSql);
+            sentencia.setInt(1, id_venta);
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
+
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        } finally {
+            if (sentencia != null) {
+                try {
+                    sentencia.close();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+
+            }
+
+        }
+        return false;
+
+    }
+
+    public int getIdAlquila(String matricula) {
+
+        try {
+            String sentenciaSQL = "select id_alquiler FROM alquila a JOIN coche c on c.id_coche=a.id_coche where  c.matricula= ?;";
+            PreparedStatement sentencia = null;
+            ResultSet resultado = null;
+
+            sentencia = conexion.prepareStatement(sentenciaSQL);
+            sentencia.setString(1, matricula);
+            resultado = sentencia.executeQuery();
+            while (resultado.next()) {
+                try {
+
+                    return resultado.getInt(1);
+
+                } catch (SQLException ex) {
+                    System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+                }
+
+            }
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(Level.ERROR, (String) null, ex);
+        }
+        return 0;
+
+    }
+
+    public boolean borrarAlquila(int id_Alquila) {
+        String sentenciaSql = "DELETE FROM alquila WHERE id_alquiler=?";
+        PreparedStatement sentencia = null;
+
+        try {
+            sentencia = conexion.prepareStatement(sentenciaSql);
+            sentencia.setInt(1, id_Alquila);
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
+
+        } catch (SQLException ex) {
+            System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        } finally {
+            if (sentencia != null) {
+                try {
+                    sentencia.close();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(ConexionBD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+
+            }
+
+        }
+        return false;
+
+    }
 }

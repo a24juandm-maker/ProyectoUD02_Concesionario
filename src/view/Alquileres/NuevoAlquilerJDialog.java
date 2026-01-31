@@ -4,6 +4,7 @@
  */
 package view.Alquileres;
 
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 /**
@@ -54,7 +55,7 @@ public class NuevoAlquilerJDialog extends javax.swing.JDialog {
 
         NombreClienteLabel.setText("Nombre Cliente :");
 
-        MatriculaLabel.setText("Maticula :");
+        MatriculaLabel.setText("Matricula :");
 
         FechaAlquilerLabel.setText("Fecha Alquiler :");
 
@@ -163,7 +164,16 @@ public class NuevoAlquilerJDialog extends javax.swing.JDialog {
     private void NuevoClienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoClienteButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NuevoClienteButtonActionPerformed
+  public void addNuevoAlquilerMenuItemListener(ActionListener al) {
+        this.AceptarButton.addActionListener(al);
+    }
 
+    public void addCancelarVentaMenuItemListener(ActionListener al) {
+        this.CancelarButton.addActionListener(al);
+    }
+     public void addNuevoClienteMenuItemListener(ActionListener al) {
+        this.NuevoClienteButton.addActionListener(al);
+    }
     public String getVendedor() {
         return this.NombreVendedorTextField.getText();
     }

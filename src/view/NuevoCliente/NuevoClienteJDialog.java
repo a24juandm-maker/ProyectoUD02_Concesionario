@@ -5,22 +5,26 @@
 package view.NuevoCliente;
 
 import java.awt.event.ActionListener;
+import view.Alquileres.NuevoAlquilerJDialog;
+import view.Ventas.NuevaVentaJDialog;
 
 /**
  *
  * @author alumno
  */
 public class NuevoClienteJDialog extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(NuevoClienteJDialog.class.getName());
 
     /**
      * Creates new form NuevoClienteJDialog
      */
-    public NuevoClienteJDialog(java.awt.Frame parent, boolean modal) {
+    public NuevoClienteJDialog(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,32 +134,30 @@ public class NuevoClienteJDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   public String getNif(){
-       return this.NifTextField.getText();
-   }
-   
-   public String getNombre(){
-       return this.NombreTextField.getText();
-   }
-   
-   public String getTelefono(){
-       return this.TelefonoTextField.getText();
-   }
-   
-   public String getMail(){
-       return this.MailTextField.getText();
-   }
-   
-   public void addNuevoClienteItemListener(ActionListener al) {
+    public String getNif() {
+        return this.NifTextField.getText();
+    }
+
+    public String getNombre() {
+        return this.NombreTextField.getText();
+    }
+
+    public String getTelefono() {
+        return this.TelefonoTextField.getText();
+    }
+
+    public String getMail() {
+        return this.MailTextField.getText();
+    }
+
+    public void addNuevoClienteItemListener(ActionListener al) {
         this.AceptarButton.addActionListener(al);
     }
 
     public void addCancelarMenuItemListener(ActionListener al) {
         this.CancelarButton.addActionListener(al);
     }
-    
-    
- 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AceptarButton;
