@@ -5,17 +5,12 @@
 package model;
 
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.lang.System.Logger.Level;
-import java.net.URL;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -158,8 +153,9 @@ public class ConexionBD {
             sentencia.setInt(3, id_comprador);
             sentencia.setInt(4, id_venta);
 
-            sentencia.executeUpdate();
-            return true;
+            int cambio=sentencia.executeUpdate();
+            return cambio>=1;
+            
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
             return false;
@@ -182,8 +178,8 @@ public class ConexionBD {
             sentencia.setInt(4, id_cliente);
             sentencia.setInt(5, id_empleado);
 
-            sentencia.executeUpdate();
-            return true;
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
         } catch (SQLException sqle) {
             return false;
         }
@@ -224,8 +220,8 @@ public class ConexionBD {
             sentencia.setString(2, nombre);
             sentencia.setString(3, usuario);
             sentencia.setString(4, pass);
-            sentencia.executeUpdate();
-            return true;
+            int cambio=sentencia.executeUpdate();
+            return cambio>=1;
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } finally {
@@ -250,8 +246,8 @@ public class ConexionBD {
             sentencia.setString(3, nombre);
             sentencia.setString(4, telefono);
             sentencia.setString(5, mail);
-            sentencia.executeUpdate();
-            return true;
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } finally {
@@ -619,8 +615,8 @@ public class ConexionBD {
             sentencia = conexion.prepareStatement(sentenciaSql);
             sentencia.setString(1, password);
             sentencia.setString(2, usuario);
-            sentencia.executeUpdate();
-            return true;
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
 
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -673,9 +669,8 @@ public class ConexionBD {
         try {
             sentencia = conexion.prepareStatement(sentenciaSql);
             sentencia.setInt(1, id_venta);
-            sentencia.executeUpdate();
-
-            return true;
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
 
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -729,9 +724,8 @@ public class ConexionBD {
         try {
             sentencia = conexion.prepareStatement(sentenciaSql);
             sentencia.setInt(1, id_Alquila);
-            sentencia.executeUpdate();
-
-            return true;
+             int cambio=sentencia.executeUpdate();
+            return cambio>=1;
 
         } catch (SQLException ex) {
             System.getLogger(ConexionBD.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);

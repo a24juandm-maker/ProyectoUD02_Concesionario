@@ -136,7 +136,7 @@ public class TablaCochesJDialog extends javax.swing.JDialog {
     public void CancelarCochesButtonActionListener(ActionListener al){
         this.CancelarButton.addActionListener(al);
     }
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelarButton;

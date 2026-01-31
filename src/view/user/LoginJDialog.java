@@ -44,7 +44,7 @@ public class LoginJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         LoginLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        LoginLabel.setText("Login");
+        LoginLabel.setText("Inicio sesión");
 
         LoginButton.setText("Iniciar Sesion");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
