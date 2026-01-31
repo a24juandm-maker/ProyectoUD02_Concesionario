@@ -256,13 +256,3 @@ Algunas mejoras que podríamos implementar si tuviéramos mas tiempo son las sig
   Juan José Dorado Maquieira(a24juandm)
 
   Ángel Gestoso Agrelo(angel2ga)
-
-
-
-
-## Créditos
-  Francisco Alende Antelo(a24francisco)
-  
-  Juan José Dorado Maquieira(a24juandm)
-
-  Ángel Gestoso Agrelo(angel2ga)
