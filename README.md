@@ -293,14 +293,15 @@ Se muestra una tabla con la información de los coches sobre los coches del conc
 
 ## Reparto de tareas
 
-A la hora de repartir las tareas ,Juanjo se encargo de realizar las vistas y la interfaz gráfica mientras Fran y Angel de la conexion con la base de datos y las operaciones necesarias para el funcionamiento de la aplicación. El README se hizo de manera colaborativa entre los integrantes del grupo .
+A la hora de repartir las tareas,Juanjo se encargo de realizar las vistas y la interfaz gráfica mientras Fran y Angel de la conexion con la base de datos y las operaciones necesarias para el funcionamiento de la aplicación. El README se hizo de manera colaborativa entre los integrantes del grupo .
 De esta manera cada uno fue haciendo los commits necesarios para que la aplicación fuera avanzando al mismo tiempo que se seguía trabajando en ella.
+En total cada miembro del grupo le ha dedicado al proyecto unas 24 horas en total sumando las horas de clase mas las que cada uno ha usado en su casa para avanzar cosas del proyecto
 
 ## Mejoras
 Algunas mejoras que podríamos implementar si tuviéramos mas tiempo son las siguientes:
 
 - Usar un layout para que la pantalla del programa se redimensione automáticamente a la pantalla en la que esta siendo mostrada .
-- Cambiar algunos JLabel por JTextField ya que en la mayoría de las vistas .
+- Cambiar algunos JLabel por JTextField ya que en la mayoría de las vistas hay demasiados JLablel.
 - Mejorar el filtrado de datos erróneos en la creación.
 - Filtrar los datos introducidos como puede ser DNI , número de teléfono o correo electrónico.
 - Poder seleccionar el cliente si ya esta creado al crear una venta o alquiler.
