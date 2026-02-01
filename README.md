@@ -293,13 +293,8 @@ Se muestra una tabla con la información de los coches sobre los coches del conc
 
 ## Reparto de tareas
 
-
-Juanjo hizo las vistas el diseño de la base de datos  
-Fran hizo la lectura de la Api y algunos controladores
-Angel hizo el modelo y otros controladores
-
+A la hora de repartir las tareas ,Juanjo se encargo de realizar las vistas y la interfaz gráfica mientras Fran y Angel de la conexion con la base de datos y las operaciones necesarias para el funcionamiento de la aplicación. El README se hizo de manera colaborativa entre los integrantes del grupo .
 De esta manera cada uno fue haciendo los commits necesarios para que la aplicación fuera avanzando al mismo tiempo que se seguía trabajando en ella.
-
 
 ## Mejoras
 Algunas mejoras que podríamos implementar si tuviéramos mas tiempo son las siguientes:
