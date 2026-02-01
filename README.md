@@ -13,26 +13,27 @@
 
 ## Introducción
 
-Nuestra aplicación está inspirada en un concesionario de la marca BMW en el cual se podrán realizar las operaciones de venta y alquiler  de vehiculos. Cuando un trabajador se registra en la aplicación, accede como empleado y puede realizar la gestión de  ventas , alquileres y creación de clientes.
+Nuestra aplicación está inspirada en un concesionario de la marca BMW, en el cual se podrán realizar las operaciones de venta y alquiler de vehículos. Cuando un trabajador se registra en la aplicación, accede como empleado y puede realizar la gestión de ventas, alquileres y la creación de clientes.
 
 ## Manual técnico
 
-- **Java SE 17 o superior:** El proyecto se ha desarrollado usando la version 17 de Java, lo cual se requiere usar la misma version o superior
-- **Maven:** La gestión de las dependencias se hace con Maven, lo cual se deberá tener Maven instalado.
-- **IDE Recomendado:** Para este proyecto se ha usado Apache NetBeans como IDE pero se puede usar cualquiera que soporte el lenguaje de Java.
-- **Workbench:** Utilizamos el workbench para la creación y gestión de los campos de base de datos.
-- **mysql-connector-j-8.1.0:** Utilizado para acceder a la base de datos desde Java. 
+- **Java SE 17 o superior:** El proyecto se ha desarrollado usando la versión 17 de Java, por lo que se requiere utilizar esta versión o una superior.
+- **Maven:** La gestión de dependencias se realiza con Maven, por lo que será necesario tener Maven instalado.
+- **IDE Recomendado:** Para este proyecto se ha utilizado Apache NetBeans como IDE, aunque se puede usar cualquier otro que soporte el lenguaje Java.
+- **Workbench:** Se utiliza Workbench para la creación y gestión de los campos de la base de datos.
+- **mysql-connector-j-8.1.0:** Utilizado para acceder a la base de datos desde Java.
 
 ## Estructura
-Nuestro proyecto esta planteado siguiendo el patrón MVC(Modelo,Vista,Controlador)
+Nuestro proyecto está planteado siguiendo el patrón MVC (Modelo, Vista, Controlador).
 <img width="1920" height="1032" alt="Captura de pantalla 2026-01-23 124607" src="https://github.com/user-attachments/assets/f8b32439-9470-457f-9dc5-2b439bc80e19" />
 
 <img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/32b43c89-1c81-4a0b-ad58-d46b5a2edce5" />
 
 
 ### Modelo
-El modelo contiene los datos del programa y define cómo estos deben ser manipulados, es decir, contiene la lógica que interactúa respondiendo a las solicitudes del controlador para acceder o actualizar los datos. Notifica indirectamente a la vista cuando los datos han cambiado para que se actualice la presentación. 
-Nuestro modelo esta compuesto de los diferentes POJOS de las clases principales de la aplicación  y de la clase **ConexionBD** desde la cual gestionamos la comunicación con la base de datos: manejamos toda la conexión , introducción y consulta de datos, gestión de usuarios...
+El modelo contiene los datos del programa y define cómo deben ser manipulados. Contiene la lógica que interactúa respondiendo a las solicitudes del controlador para acceder o actualizar los datos. Notifica indirectamente a la vista cuando los datos han cambiado para que se actualice la presentación.
+
+Nuestro modelo está compuesto por los diferentes POJOs de las clases principales de la aplicación y por la clase **ConexionBD**, desde la cual gestionamos la comunicación con la base de datos: conexión, inserción y consulta de datos, gestión de usuarios, etc.
 
 **Fabrica**
 
@@ -106,22 +107,22 @@ Nuestro modelo esta compuesto de los diferentes POJOS de las clases principales 
 
 
 ### Controlador
-El controlador recibe las entradas del usuario desde la vista y las traduce en acciones que el modelo debe ejecutar. Se encarga de interpretar las acciones del usuario, manejar los eventos, y de actualizar tanto el modelo como la vista. Nuestro controlador consta de las siguientes clases:
-- **FrontController**:controlador principal de la aplicación,encargado de coordinar.
-- **AlquileresController**:Gestiona la tabla de alquileres y la opción de eliminar un alquiler.
-- **NuevoAlquilerController**: Gestiona la creacion de nuevos alquileres.
-- **ClienteController**:Gestiona la creacion de clientes.
-- **CochesController**:Gestiona la visualizacion y actualizaciob tabla de coches. 
-- **LoginController**: Gestiona la validacion de credenciales para iniciar sesión.
-- **RegistroController**:Gestiona la creacion de un nuevo usuario de la aplicación.
-- **NuevaVentaController**:Gestiona la creacion de ventas.
-- **VentasController**: Gestiona la visualizacion ,actualizacion y eliminacion de las ventas.
+El controlador recibe las entradas del usuario desde la vista y las traduce en acciones que el modelo debe ejecutar. Se encarga de interpretar las acciones del usuario, manejar los eventos y actualizar tanto el modelo como la vista. Nuestro controlador consta de las siguientes clases:
+- **FrontController**: Controlador principal de la aplicación, encargado de la coordinación general.
+- **AlquileresController**: Gestiona la tabla de alquileres y la opción de eliminar un alquiler.
+- **NuevoAlquilerController**: Gestiona la creación de nuevos alquileres.
+- **ClienteController**: Gestiona la creación de clientes
+- **CochesController**: Gestiona la visualización y actualización de la tabla de coches.
+- **LoginController**: Gestiona la validación de credenciales para iniciar sesión.
+- **RegistroController**: Gestiona la creación de un nuevo usuario.
+- **NuevaVentaController**: Gestiona la creación de ventas.
+- **VentasController**: Gestiona la visualización, actualización y eliminación de ventas.
 
 
 
 
 ### Vista
-Se encarga de la mostrar los datos del modelo de manera que el usuario pueda interactuar con ellos de manera sencilla. Nuestras vistas estan compuestas de las siguientes clases:
+Se encarga de mostrar los datos del modelo de manera que el usuario pueda interactuar con ellos de forma sencilla. Nuestras vistas están compuestas por las siguientes clases:
 - **MainJFrame**: Ventana principal de la aplicación.
 - **NuevoAlquilerJDialog**: Interfaz para introducir los datos para un nuevo alquiler.
 - **TablaAlquileresJDialog**: Ventana donde se muestran todos los alquileres realizados.
